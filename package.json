@@ -25,6 +25,7 @@
     "docz": "^2.0.0-rc.76",
     "gatsby": "^2.13.73",
     "gatsby-cli": "^2.8.26",
+    "gatsby-plugin-manifest": "^2.2.37",
     "gatsby-plugin-offline": "^2.2.7",
     "gatsby-plugin-sharp": "^2.2.18",
     "gatsby-theme-docz": "latest",
