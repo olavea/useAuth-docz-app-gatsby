@@ -64,6 +64,86 @@
       }
     },
     {
+      "key": "docs/4-enjoy.mdx",
+      "value": {
+        "name": "Enjoy useAuth",
+        "route": "/Enjoy-useAuth",
+        "id": "76f87c5fda960230a9a92ce463fb4e8e",
+        "filepath": "docs/4-enjoy.mdx",
+        "fullpath": "/Users/olavea/Desktop/Develop/forClients/useAuth.dev_docz_gatsby_new_16/useAuth-docz-app-gatsby/docs/4-enjoy.mdx",
+        "link": "https://github.com/Swizec/useAuth/edit/master/docs/4-enjoy.mdx",
+        "slug": "docs-4-enjoy",
+        "menu": "",
+        "headings": [
+          {
+            "slug": "4-enjoy-useauth",
+            "depth": 3,
+            "value": "4. Enjoy useAuth"
+          }
+        ]
+      }
+    },
+    {
+      "key": "docs/5.checklist.mdx",
+      "value": {
+        "id": "d0fa6ae24883a4e2102ab06105c67bd9",
+        "filepath": "docs/5.checklist.mdx",
+        "fullpath": "/Users/olavea/Desktop/Develop/forClients/useAuth.dev_docz_gatsby_new_16/useAuth-docz-app-gatsby/docs/5.checklist.mdx",
+        "link": "https://github.com/Swizec/useAuth/edit/master/docs/5.checklist.mdx",
+        "slug": "docs-5-checklist",
+        "route": "/docs-5-checklist",
+        "name": "5.checklist",
+        "menu": "",
+        "headings": [
+          {
+            "slug": "checklist-for-configuring-auth0",
+            "depth": 2,
+            "value": "Checklist for configuring Auth0"
+          },
+          {
+            "slug": "tips--tricks",
+            "depth": 1,
+            "value": "Tips & tricks"
+          },
+          {
+            "slug": "persisting-login-after-refresh",
+            "depth": 2,
+            "value": "Persisting login after refresh"
+          },
+          {
+            "slug": "users-access-tokens",
+            "depth": 2,
+            "value": "User's access tokens"
+          },
+          {
+            "slug": "author",
+            "depth": 2,
+            "value": "Author"
+          },
+          {
+            "slug": "🤝-contributing",
+            "depth": 2,
+            "value": "🤝 Contributing"
+          },
+          {
+            "slug": "show-your-support",
+            "depth": 2,
+            "value": "Show your support"
+          },
+          {
+            "slug": "-license",
+            "depth": 2,
+            "value": "📝 License"
+          },
+          {
+            "slug": "contributors-",
+            "depth": 2,
+            "value": "Contributors ✨"
+          }
+        ]
+      }
+    },
+    {
       "key": "docs/setup.mdx",
       "value": {
         "name": "Getting Started",
@@ -81,29 +161,24 @@
             "value": "How to use useAuth"
           },
           {
-            "slug": "useauth-is-designed-to-be-quick-to-setup-youll-need-an-auth0-account-with-an-app-domain-and-client-id",
+            "slug": "1-install-the-hook",
             "depth": 3,
-            "value": "useAuth is designed to be quick to setup. You'll need an Auth0 account with an app domain and client id."
+            "value": "1. Install the hook"
           },
           {
-            "slug": "enjoy-useauth",
-            "depth": 2,
-            "value": "Enjoy useAuth"
-          },
-          {
-            "slug": "how-do-i-install-useauth",
-            "depth": 2,
-            "value": "How Do I Install useAuth?"
-          },
-          {
-            "slug": "set-up-authprovider",
-            "depth": 2,
-            "value": "Set up AuthProvider"
+            "slug": "2-set-up-authprovider",
+            "depth": 3,
+            "value": "2. Set up AuthProvider"
           },
           {
             "slug": "default-auth0-params",
-            "depth": 3,
+            "depth": 4,
             "value": "Default Auth0 params"
+          },
+          {
+            "slug": "3-create-the-callback-page",
+            "depth": 3,
+            "value": "3. Create the callback page"
           }
         ]
       }
@@ -211,14 +286,19 @@
             "value": "Add authentication to your React app"
           },
           {
-            "slug": "useauth-is-an-open-source-and-free-way-to-add-authentication-to-your-react-app",
-            "depth": 2,
-            "value": "useAuth is an open source and free way to add authentication to your React app"
+            "slug": "how-useauth-works",
+            "depth": 1,
+            "value": "How useAuth works"
           },
           {
-            "slug": "you-lean-back-and-useauth-handles-users-login-forms-redirects-sharing-state-between-components-everything",
-            "depth": 3,
-            "value": "You lean back and useAuth handles  users ,  login forms ,  redirects , sharing  state  between components.  Everything ."
+            "slug": "curious-yet",
+            "depth": 1,
+            "value": "Curious yet?"
+          },
+          {
+            "slug": "these-secure-sites-use-useauth",
+            "depth": 1,
+            "value": "These secure sites use useAuth"
           }
         ]
       }

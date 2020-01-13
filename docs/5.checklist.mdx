@@ -1,0 +1,117 @@
+## Checklist for configuring Auth0
+
+There's a couple of required configurations you need to make in Auth0 to make useAuth run smoothly.
+
+**Callback URLs**
+
+You need to allow both local development and your production app in callback URLs. It's a whitelist that tells Auth0 that your login request is coming from the right source.
+![Allowed Callback URLs](https://camo.githubusercontent.com/f06b5e5917deafed8f233aff7e3b2f6bf0024629/68747470733a2f2f692e696d6775722e636f6d2f787a38554b385a2e706e67)
+
+
+⚠️ **Allowed Web Origins**
+
+useAuth avoids using local storage for secure tokens. For Auth0 to know that our `checkSession` request is coming from the right source, you need to add your URLs to allowed web origins.
+
+![Allowed Web Origins](https://i.imgur.com/w2mmHH1.png)
+
+**Allowed logout urls**
+
+After logging out, Auth0 redirects back to your app. Again, it needs to know you aren't up to anything shady. If you are getting 400 response errors on page load, this is the most likely culprit.
+
+![Allowed Logout URLs](https://i.imgur.com/S160EiI.png)
+
+# Tips & tricks
+
+## Persisting login after refresh
+
+**NB Make sure you're not blocking cookies! Extensions like privacy badger and the Brave browser will prevent Auth0 from setting cookies so refreshing between logins wont work**
+
+After you've set everything up (and you're using social sign on methods) you'll notice that refreshing doesn't keep your user logged in... 👎
+
+If you're using an IdP such as Google or Github to provide identity, you will need to register an app on Auth0 to enable this behaviour. The steps to create this behaviour are a bit nested in docs but can be achieved relatively simply by following the guide [`Set Up Social Connections`](https://auth0.com/docs/dashboard/guides/connections/set-up-connections-social) on the Auth0 site. The guide follows steps for Google sign on, your mileage with other providers may vary...
+
+For a more detailed understanding of why this is happening you can have a read through [this section](https://auth0.com/blog/react-tutorial-building-and-securing-your-first-app/#Securing-your-React-App) of Auth0s guide to setting up a secure React application. (Pro tip: search for `Keeping Users Signed In after a Refresh` to jump straight to the section in question).
+
+## User's access tokens
+
+Since version 0.4.0 useAuth exposes the entire Auth0 authResult object so you can access your user's id or access token. This is useful when you have to log the user into your own backend as well as the frontend.
+
+For reference:
+
+-   https://github.com/Swizec/useAuth/issues/11
+-   https://github.com/Swizec/useAuth/issues/22
+
+Like this:
+
+```javascript
+function SomeComponent() {
+    const { authResult } = useAuth();
+
+    console.log(authResult.idToken);
+    console.log(authResult.accessToken);
+    // etc, I recommend printing the authResult object to see everything that's available
+}
+```
+
+---
+
+You can try it out here 👉 https://gatsby-useauth-example.now.sh/
+
+## Author
+
+👤 **Swizec Teller <swizec@swizec.com>**
+
+-   Github: [@swizec](https://github.com/swizec)
+-   Twitter: [@swizec](https://twitter.com/swizec)
+-   Blog: [swizec.com/blog](https://swizec.com/blog)
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/Swizec/useAuth/issues).
+
+I am looking to support other authentication providers. Please help :)
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+## 📝 License
+
+Copyright © 2019 [Swizec Teller <swizec@swizec.com>](https://github.com/swizec).<br />
+This project is [MIT](https://github.com/Swizec/useAuth/blob/master/LICENSE) licensed.
+
+---
+
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/dejanstrancar"><img src="https://avatars1.githubusercontent.com/u/3260215?v=4" width="100px;" alt="Dejan"/><br /><sub><b>Dejan</b></sub></a><br /><a href="#example-dejanstrancar" title="Examples">💡</a></td>
+    <td align="center"><a href="https://jasonformat.com"><img src="https://avatars2.githubusercontent.com/u/105127?v=4" width="100px;" alt="Jason Miller"/><br /><sub><b>Jason Miller</b></sub></a><br /><a href="https://github.com/Swizec/useAuth/commits?author=developit" title="Code">💻</a></td>
+    <td align="center"><a href="https://graham.now.sh"><img src="https://avatars1.githubusercontent.com/u/4955937?v=4" width="100px;" alt="Graham Barber"/><br /><sub><b>Graham Barber</b></sub></a><br /><a href="#question-puregarlic" title="Answering Questions">💬</a></td>
+    <td align="center"><a href="https://github.com/MateusGabi"><img src="https://avatars3.githubusercontent.com/u/14940643?v=4" width="100px;" alt="Mateus Gabi"/><br /><sub><b>Mateus Gabi</b></sub></a><br /><a href="https://github.com/Swizec/useAuth/commits?author=MateusGabi" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://jgalat.dev/"><img src="https://avatars3.githubusercontent.com/u/9066191?v=4" width="100px;" alt="Jorge Galat"/><br /><sub><b>Jorge Galat</b></sub></a><br /><a href="https://github.com/Swizec/useAuth/commits?author=jgalat" title="Code">💻</a></td>
+    <td align="center"><a href="http://swizec.com"><img src="https://avatars0.githubusercontent.com/u/56883?v=4" width="100px;" alt="Swizec Teller"/><br /><sub><b>Swizec Teller</b></sub></a><br /><a href="https://github.com/Swizec/useAuth/commits?author=Swizec" title="Code">💻</a> <a href="https://github.com/Swizec/useAuth/commits?author=Swizec" title="Documentation">📖</a> <a href="#blog-Swizec" title="Blogposts">📝</a> <a href="#example-Swizec" title="Examples">💡</a> <a href="#maintenance-Swizec" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://github.com/NWRichmond"><img src="https://avatars0.githubusercontent.com/u/5732000?v=4" width="100px;" alt="Nick Richmond"/><br /><sub><b>Nick Richmond</b></sub></a><br /><a href="https://github.com/Swizec/useAuth/commits?author=NWRichmond" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="http://olliemonk.com"><img src="https://avatars0.githubusercontent.com/u/7108120?v=4" width="100px;" alt="Ollie Monk"/><br /><sub><b>Ollie Monk</b></sub></a><br /><a href="https://github.com/Swizec/useAuth/commits?author=omonk" title="Documentation">📖</a> <a href="https://github.com/Swizec/useAuth/commits?author=omonk" title="Code">💻</a></td>
+    <td align="center"><a href="http://henrikwenz.de/"><img src="https://avatars3.githubusercontent.com/u/1265681?v=4" width="100px;" alt="Henrik Wenz"/><br /><sub><b>Henrik Wenz</b></sub></a><br /><a href="https://github.com/Swizec/useAuth/issues?q=author%3AHaNdTriX" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://twitter.com/maxchehab"><img src="https://avatars1.githubusercontent.com/u/13038919?v=4" width="100px;" alt="Max Chehab"/><br /><sub><b>Max Chehab</b></sub></a><br /><a href="https://github.com/Swizec/useAuth/commits?author=maxchehab" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://joelb.dev"><img src="https://avatars0.githubusercontent.com/u/6668097?v=4" width="100px;" alt="Joel Bartlett"/><br /><sub><b>Joel Bartlett</b></sub></a><br /><a href="https://github.com/Swizec/useAuth/commits?author=murbar" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/smehdii"><img src="https://avatars1.githubusercontent.com/u/22805576?v=4" width="100px;" alt="SIDDIK MEHDI "/><br /><sub><b>SIDDIK MEHDI </b></sub></a><br /><a href="https://github.com/Swizec/useAuth/commits?author=smehdii" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/sophister"><img src="https://avatars1.githubusercontent.com/u/219501?v=4" width="100px;" alt="Jess"/><br /><sub><b>Jess</b></sub></a><br /><a href="https://github.com/Swizec/useAuth/issues?q=author%3Asophister" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/vasco3"><img src="https://avatars0.githubusercontent.com/u/804301?v=4" width="100px;" alt="Jorge Cuadra"/><br /><sub><b>Jorge Cuadra</b></sub></a><br /><a href="https://github.com/Swizec/useAuth/commits?author=vasco3" title="Documentation">📖</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://www.oyvinmar.com/"><img src="https://avatars0.githubusercontent.com/u/364853?v=4" width="100px;" alt="Øyvind Marthinsen"/><br /><sub><b>Øyvind Marthinsen</b></sub></a><br /><a href="https://github.com/Swizec/useAuth/commits?author=oyvinmar" title="Code">💻</a></td>
+    <td align="center"><a href="http://feed.no"><img src="https://avatars3.githubusercontent.com/u/764318?v=4" width="100px;" alt="Fredrik Søgaard"/><br /><sub><b>Fredrik Søgaard</b></sub></a><br /><a href="https://github.com/Swizec/useAuth/commits?author=fredrik-sogaard" title="Code">💻</a></td>
+  </tr>
+</table>
+

@@ -1,0 +1,77 @@
+---
+name: Enjoy useAuth
+route: /Enjoy-useAuth
+---
+
+
+### 4. Enjoy useAuth
+
+![alt](https://camo.githubusercontent.com/e5f8a596e3406a7129d347b2cc6bbe4a3e76da02/68747470733a2f2f692e696d6775722e636f6d2f4b756e45656d4e2e676966)
+
+
+
+You're ready to use `useAuth` for authentication in your React app.
+
+Here's a login button for example:
+
+```javascript
+// src/pages/index.js
+
+const Login = () => {
+    const { isAuthenticated, login, logout } = useAuth();
+
+    if (isAuthenticated()) {
+        return <Button onClick={logout}>Logout</Button>;
+    } else {
+        return <Button onClick={login}>Login</Button>;
+    }
+};
+```
+
+`isAuthenticated` is a method that checks if the user's cookie is still valid. `login` and `logout` trigger their respective actions.
+
+You can even say hello to your users
+
+```javascript
+// src/pages/index.js
+
+const IndexPage = () => {
+  const { isAuthenticated, user } = useAuth()
+
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <h1>Hi {isAuthenticated() ? user.name : "people"}</h1>
+```
+
+Check `isAuthenticated` then use the user object. Simple as that.
+
+`isAuthenticating` is a flag for checking whether or not `useAuth` is in the middle of validating login details. This allows you to then make requests to your user database and work out where to send users from the `auth0_callback` page, e.g. profile page or sign up.
+
+```javascript
+const Auth0CallbackPage = () => {
+    const { user, isAuthenticating, handleAuthentication } = useAuth();
+    const { loading, data, error } = useQuery(QUERY, {
+        variables: { id: user.sub }
+    });
+
+    if (error) {
+        return <h1>There was an error</h1>;
+    }
+
+    if (isAuthenticating || loading) {
+        return (
+            <h1>
+                This is the auth callback page, you should be redirected
+                immediately.
+            </h1>
+        );
+    }
+
+    const { user: dbUser } = data || {};
+    const redirectUrl = dbUser ? "/app/profile" : "/app/signup";
+
+    handleAuthentication({ postLoginRoute: redirectUrl });
+};
+```
+

@@ -16,7 +16,7 @@ module.exports = {
         short_name: `useAuth!`,
         start_url: `/`,
 
-        icon: `src/images/Swizec2.png`
+        icon: `src/images/Swizec7.png`
       }
     }
 

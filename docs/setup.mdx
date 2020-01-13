@@ -3,34 +3,19 @@ name: Getting Started
 route: /setup
 ---
 
+
+
+
+
+
+
+
+
 ## How to use useAuth
 
-### useAuth is designed to be quick to setup. You'll need an Auth0 account with an app domain and client id.
+[`useAuth`](https://github.com/Swizec/useAuth) is designed to be quick to setup. You'll need an Auth0 account with an app domain and client id.
 
-
-## Enjoy useAuth
-You can even say hello to your users
-
-![alt](https://camo.githubusercontent.com/e5f8a596e3406a7129d347b2cc6bbe4a3e76da02/68747470733a2f2f692e696d6775722e636f6d2f4b756e45656d4e2e676966)
-
-
-
-```
-// src/pages/index.js
-
-const IndexPage = () => {
-  const { isAuthenticated, user } = useAuth()
-
-  return (
-    <Layout>
-      <SEO title="Home" />
-      <h1>Hi {isAuthenticated() ? user.name : "people"}</h1>
-```
-Check **isAuthenticated** then use the user object. Simple as that.
-
-## How Do I Install useAuth?
-
-
+### 1. Install the hook
 
 ```
 $ yarn add react-use-auth
@@ -38,22 +23,17 @@ or
 $ npm i react-use-auth
 ```
 
+Downloads from npm, adds to your package.json, etc.
 
-Downloads from npm, adds to your package.json, etc. You can use npm as well.
+### 2. Set up AuthProvider
 
+useAuth uses an `AuthProvider` component to configure the Auth0 client and share state between components. It's using React context with a reducer behind the scenes, but that's an implementation detail.
 
-
-## Set up AuthProvider
-useAuth uses an AuthProvider component to configure the Auth0 client and share state between components. It's using React context with a reducer behind the scenes, but that's an implementation detail.
-
-I recommend adding this around your root component. In Gatsby that's done in gatsby-browser.js and gatsby-ssr.js. Yes useAuth is built so it doesn't break server-side rendering. ✌️
+I recommend adding this around your root component. In Gatsby that's done in `gatsby-browser.js` and `gatsby-ssr.js`. Yes `useAuth` is built so it doesn't break server-side rendering. ✌️
 
 But of course server-side "you" will always be logged out.
 
-
-
-
-```
+```javascript
 // gatsby-browser.js
 
 import React from "react";
@@ -72,23 +52,22 @@ export const wrapRootElement = ({ element }) => (
 );
 ```
 
-```
-<AuthProvider>
-```
- creates a context, sets up a state reducer, initializes an Auth0 client and so on. Everything you need for authentication to work in your whole app :)
+`<AuthProvider>` creates a context, sets up a state reducer, initializes an Auth0 client and so on. Everything you need for authentication to work in your whole app :)
 
 The API takes a couple config options:
 
-1. navigate – your navigation function, used for redirects. I've tested with Gatsby, but anything should work
-2. auth0_domain – from your Auth0 app
-auth0_client_id – from your Auth0 app
-auth0_params – an object that lets you overwrite any of the default Auth0 client parameters
-PS: even though Auth doesn't do anything server-side, useAuth will throw errors during build, if its context doesn't exist
+1. `navigate` – your navigation function, used for redirects. I've tested with Gatsby, but anything should work
+2. `auth0_domain` – from your Auth0 app
+3. `auth0_client_id` – from your Auth0 app
+4. `auth0_params` – an object that lets you overwrite any of the default Auth0 client parameters
 
-### Default Auth0 params
-By default useAuth's Auth0 client uses these params:
+_PS: even though Auth doesn't do anything server-side, useAuth will throw errors during build, if its context doesn't exist_
 
-```
+#### Default Auth0 params
+
+By default `useAuth`'s Auth0 client uses these params:
+
+```javascript
 const params = {
     domain: auth0_domain,
     clientID: auth0_client_id,
@@ -99,13 +78,58 @@ const params = {
 };
 ```
 
-domain and clientID come from your props.
+`domain` and `clientID` come from your props.
 
-redirectUri is set to use the auth0_callback page on the current domain. Auth0 redirects here after users login so you can set cookies and stuff. useAuth will handle this for you ✌️
+`redirectUri` is set to use the `auth0_callback` page on the current domain. Auth0 redirects here after users login so you can set cookies and stuff. `useAuth` will handle this for you ✌️
 
-audience is set to use api/v2. I know this is necessary but honestly have been copypasting it through several of my projects.
+`audience` is set to use api/v2. I know this is necessary but honestly have been copypasting it through several of my projects.
 
-responseType same here. I copy paste this from old projects so I figured it's a good default.
+`responseType` same here. I copy paste this from old projects so I figured it's a good default.
 
-scope you need openid for social logins and to be able to fetch user profiles after authentication. Profile and Email too. You can add more via the auth0_params override.
+`scope` you need `openid` for social logins and to be able to fetch user profiles after authentication. Profile and Email too. You can add more via the `auth0_params` override.
+
+### 3. Create the callback page
+
+Auth0 and most other authentication providers use OAuth. That requires redirecting your user to _their_ login form. After login, the provider redirects the user back to _your_ app.
+
+Any way of creating React pages should work, here's what I use for Gatsby.
+
+```javascript
+// src/pages/auth0_callback
+
+import React, { useEffect } from "react";
+
+import { useAuth } from "react-use-auth";
+import Layout from "../components/layout";
+
+const Auth0CallbackPage = () => {
+    const { handleAuthentication } = useAuth();
+    useEffect(() => {
+        handleAuthentication();
+    }, []);
+
+    return (
+        <Layout>
+            <h1>
+                This is the auth callback page, you should be redirected
+                immediately.
+            </h1>
+        </Layout>
+    );
+};
+
+export default Auth0CallbackPage;
+```
+
+The goal is to load a page, briefly show some text, and run the `handleAuthentication` method from `useAuth` on page load.
+
+That method will create a cookie in local storage with your user's information and redirect back to the homepage by default.
+
+To redirect to a route other than the homepage after the user is logged in, supply the `handleAuthentication` function an Object Literal with the `postLoginRoute` key and an associated route value. For example, to route to `/account`, call `handleAuthentication` as follows:
+
+```javascript
+handleAuthentication({ postLoginRoute: "/account" });
+```
+
+**_PS: Make sure you add `<domain>/auth0_callback` as a valid callback URL in your Auth0 config_**
 
