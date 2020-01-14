@@ -64,34 +64,6 @@
       }
     },
     {
-      "key": "docs/4-enjoy.mdx",
-      "value": {
-        "name": "Enjoy useAuth",
-        "route": "/Enjoy-useAuth",
-        "id": "76f87c5fda960230a9a92ce463fb4e8e",
-        "filepath": "docs/4-enjoy.mdx",
-        "fullpath": "/Users/olavea/Desktop/Develop/forClients/useAuth.dev_docz_gatsby_new_16/useAuth-docz-app-gatsby/docs/4-enjoy.mdx",
-        "link": "https://github.com/Swizec/useAuth/edit/master/docs/4-enjoy.mdx",
-        "slug": "docs-4-enjoy",
-        "menu": "",
-        "headings": []
-      }
-    },
-    {
-      "key": "docs/5.checklist.mdx",
-      "value": {
-        "id": "d0fa6ae24883a4e2102ab06105c67bd9",
-        "filepath": "docs/5.checklist.mdx",
-        "fullpath": "/Users/olavea/Desktop/Develop/forClients/useAuth.dev_docz_gatsby_new_16/useAuth-docz-app-gatsby/docs/5.checklist.mdx",
-        "link": "https://github.com/Swizec/useAuth/edit/master/docs/5.checklist.mdx",
-        "slug": "docs-5-checklist",
-        "route": "/docs-5-checklist",
-        "name": "5.checklist",
-        "menu": "",
-        "headings": []
-      }
-    },
-    {
       "key": "docs/setup.mdx",
       "value": {
         "name": "Getting Started",
@@ -429,28 +401,6 @@
               }
             }
           }
-        }
-      ]
-    },
-    {
-      "key": "gatsby-browser.js",
-      "value": [
-        {
-          "description": "",
-          "displayName": "wrapRootElement",
-          "methods": [],
-          "actualName": "wrapRootElement"
-        }
-      ]
-    },
-    {
-      "key": "src/pages/exampleLogin.js",
-      "value": [
-        {
-          "description": "",
-          "displayName": "Login",
-          "methods": [],
-          "actualName": "Login"
         }
       ]
     }
