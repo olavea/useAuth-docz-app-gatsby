@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "../components/Button";
 import { useAuth } from "react-use-auth";
 
-const NotFoundPage = () => {
+const Login = () => {
   const { isAuthenticated, login, logout } = useAuth();
   if (isAuthenticated()) {
     return <Button onClick={logout}>Logout</Button>;
@@ -10,4 +10,5 @@ const NotFoundPage = () => {
     return <Button onClick={login}>Login</Button>;
   }
 };
-export default NotFoundPage;
+
+export default Login;

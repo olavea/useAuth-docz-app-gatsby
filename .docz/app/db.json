@@ -74,13 +74,7 @@
         "link": "https://github.com/Swizec/useAuth/edit/master/docs/4-enjoy.mdx",
         "slug": "docs-4-enjoy",
         "menu": "",
-        "headings": [
-          {
-            "slug": "4-enjoy-useauth",
-            "depth": 3,
-            "value": "4. Enjoy useAuth"
-          }
-        ]
+        "headings": []
       }
     },
     {
@@ -94,7 +88,51 @@
         "route": "/docs-5-checklist",
         "name": "5.checklist",
         "menu": "",
+        "headings": []
+      }
+    },
+    {
+      "key": "docs/setup.mdx",
+      "value": {
+        "name": "Getting Started",
+        "route": "/setup",
+        "id": "d751e66074a5fd31ca336aa4f8404693",
+        "filepath": "docs/setup.mdx",
+        "fullpath": "/Users/olavea/Desktop/Develop/forClients/useAuth.dev_docz_gatsby_new_16/useAuth-docz-app-gatsby/docs/setup.mdx",
+        "link": "https://github.com/Swizec/useAuth/edit/master/docs/setup.mdx",
+        "slug": "docs-setup",
+        "menu": "",
         "headings": [
+          {
+            "slug": "how-to-use-useauth",
+            "depth": 2,
+            "value": "How to use useAuth"
+          },
+          {
+            "slug": "1-install-the-hook",
+            "depth": 3,
+            "value": "1. Install the hook"
+          },
+          {
+            "slug": "2-set-up-authprovider",
+            "depth": 3,
+            "value": "2. Set up AuthProvider"
+          },
+          {
+            "slug": "default-auth0-params",
+            "depth": 4,
+            "value": "Default Auth0 params"
+          },
+          {
+            "slug": "3-create-the-callback-page",
+            "depth": 3,
+            "value": "3. Create the callback page"
+          },
+          {
+            "slug": "4-enjoy-useauth",
+            "depth": 3,
+            "value": "4. Enjoy useAuth"
+          },
           {
             "slug": "checklist-for-configuring-auth0",
             "depth": 2,
@@ -139,46 +177,6 @@
             "slug": "contributors-",
             "depth": 2,
             "value": "Contributors ✨"
-          }
-        ]
-      }
-    },
-    {
-      "key": "docs/setup.mdx",
-      "value": {
-        "name": "Getting Started",
-        "route": "/setup",
-        "id": "d751e66074a5fd31ca336aa4f8404693",
-        "filepath": "docs/setup.mdx",
-        "fullpath": "/Users/olavea/Desktop/Develop/forClients/useAuth.dev_docz_gatsby_new_16/useAuth-docz-app-gatsby/docs/setup.mdx",
-        "link": "https://github.com/Swizec/useAuth/edit/master/docs/setup.mdx",
-        "slug": "docs-setup",
-        "menu": "",
-        "headings": [
-          {
-            "slug": "how-to-use-useauth",
-            "depth": 2,
-            "value": "How to use useAuth"
-          },
-          {
-            "slug": "1-install-the-hook",
-            "depth": 3,
-            "value": "1. Install the hook"
-          },
-          {
-            "slug": "2-set-up-authprovider",
-            "depth": 3,
-            "value": "2. Set up AuthProvider"
-          },
-          {
-            "slug": "default-auth0-params",
-            "depth": 4,
-            "value": "Default Auth0 params"
-          },
-          {
-            "slug": "3-create-the-callback-page",
-            "depth": 3,
-            "value": "3. Create the callback page"
           }
         ]
       }
@@ -289,6 +287,11 @@
             "slug": "how-useauth-works",
             "depth": 1,
             "value": "How useAuth works"
+          },
+          {
+            "slug": "say-hi-to-your-user-when-she-logs-in",
+            "depth": 1,
+            "value": "Say hi to your user when she logs in"
           },
           {
             "slug": "curious-yet",
@@ -426,6 +429,28 @@
               }
             }
           }
+        }
+      ]
+    },
+    {
+      "key": "gatsby-browser.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "wrapRootElement",
+          "methods": [],
+          "actualName": "wrapRootElement"
+        }
+      ]
+    },
+    {
+      "key": "src/pages/exampleLogin.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Login",
+          "methods": [],
+          "actualName": "Login"
         }
       ]
     }
