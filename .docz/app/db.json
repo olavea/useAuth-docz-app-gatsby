@@ -64,6 +64,46 @@
       }
     },
     {
+      "key": "docs/quickStart.mdx",
+      "value": {
+        "name": "Quick Start",
+        "menu": "Components",
+        "id": "11446ec7100472168fe063597a4de6a1",
+        "filepath": "docs/quickStart.mdx",
+        "fullpath": "/Users/olavea/Desktop/Develop/forClients/useAuth.dev_docz_gatsby_new_16/useAuth-docz-app-gatsby/docs/quickStart.mdx",
+        "link": "https://github.com/Swizec/useAuth/edit/master/docs/quickStart.mdx",
+        "slug": "docs-quick-start",
+        "route": "/docs-quick-start",
+        "headings": [
+          {
+            "slug": "how-to-test-useauth",
+            "depth": 2,
+            "value": "How to test useAuth"
+          },
+          {
+            "slug": "1-install-the-hook",
+            "depth": 3,
+            "value": "1. Install the hook"
+          },
+          {
+            "slug": "2-set-up-authprovider",
+            "depth": 3,
+            "value": "2. Set up AuthProvider"
+          },
+          {
+            "slug": "3-create-the-callback-page",
+            "depth": 3,
+            "value": "3. Create the callback page"
+          },
+          {
+            "slug": "4-enjoy-useauth",
+            "depth": 3,
+            "value": "4. Enjoy useAuth"
+          }
+        ]
+      }
+    },
+    {
       "key": "docs/setup.mdx",
       "value": {
         "name": "Getting Started",

@@ -1,0 +1,108 @@
+---
+name: Quick Start
+menu: Components
+---
+
+Quick Start
+This quick start is intended for beginners/newbies developers. For a ___ intro to useAuth, head to our ___(tutorial)!
+
+
+## How to test useAuth
+
+[`useAuth`](https://github.com/Swizec/useAuth)
+This is just a test, to get a fell for how to use useAuth,
+Now you will set up useAuth using Swizec's Auth0 account.
+You'll later need your own Auth0 account with an app domain and client id.
+
+### 1. Install the hook
+
+```
+$ yarn add react-use-auth
+or
+$ npm i react-use-auth
+```
+
+Downloads from npm, take a look in your package.json.
+
+### 2. Set up AuthProvider
+
+
+I recommend adding this in `gatsby-browser.js`.
+
+
+```javascript
+// gatsby-browser.js
+
+import React from "react";
+import { navigate } from "gatsby";
+
+import { AuthProvider } from "react-use-auth";
+
+export const wrapRootElement = ({ element }) => (
+    <AuthProvider
+        navigate={navigate}
+        auth0_domain="useauth.auth0.com"
+        auth0_client_id="GjWNFNOHq1ino7lQNJBwEywa1aYtbIzh"
+    >
+        {element}
+    </AuthProvider>
+);
+```
+
+### 3. Create the callback page
+
+
+```javascript
+// src/pages/auth0_callback.js
+
+import React, { useEffect } from "react";
+
+import { useAuth } from "react-use-auth";
+import Layout from "../components/layout";
+
+const Auth0CallbackPage = () => {
+    const { handleAuthentication } = useAuth();
+    useEffect(() => {
+        handleAuthentication();
+    }, []);
+
+    return (
+        <Layout>
+            <h1>
+                This is the auth callback page, you should be redirected
+                immediately.
+            </h1>
+        </Layout>
+    );
+};
+
+export default Auth0CallbackPage;
+```
+Auth0 use OAuth. Auth0 is redirecting your user to _their_ login form. After login, Auth0 redirects your user back to _your_ app.
+
+### 4. Enjoy useAuth
+
+
+Here's a login button for example:
+
+```javascript
+// src/pages/index.js
+
+const Login = () => {
+    const { isAuthenticated, login, logout } = useAuth();
+
+    if (isAuthenticated()) {
+        return <Button onClick={logout}>Logout</Button>;
+    } else {
+        return <Button onClick={login}>Login</Button>;
+    }
+};
+```
+
+
+
+![Say hi to your user gif](https://camo.githubusercontent.com/e5f8a596e3406a7129d347b2cc6bbe4a3e76da02/68747470733a2f2f692e696d6775722e636f6d2f4b756e45656d4e2e676966)
+
+
+
+You're ready to use `useAuth` for authentication in your React app.
